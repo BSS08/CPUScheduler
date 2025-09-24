@@ -1,0 +1,30 @@
+# Virtual environments
+myenv/
+clean_venv/
+.env/
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+
+# Streamlit cache and logs
+.streamlit/
+.cache/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Jupyter/Notebook checkpoints
+.ipynb_checkpoints/
+
+# Local logs
+*.log
+
