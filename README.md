@@ -62,20 +62,6 @@ https://<github-username>-<repo>-<branch>.streamlit.app
 
 ---
 
-## Troubleshooting
-- ModuleNotFoundError on Cloud → add the package to `requirements.txt`, push, then reboot cache.
-- Blank Gantt → ensure arrival/burst are numeric and valid; apply edits in the data editor.
-- Wrong entry point → set `app.py` as the main file in the deploy form.
-
----
-
-## Roadmap
-- Round Robin and Priority scheduling
-- Context switch overhead
-- Export tables and charts
-
----
-
 ## License
 MIT License
 
