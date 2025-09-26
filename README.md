@@ -33,6 +33,34 @@ The app starts at http://localhost:8501
 
 ---
 
+## What this web app does
+- Simulates three CPU scheduling strategies on the same set of processes:
+  - FCFS: Processes execute in order of arrival.
+  - SJF (non-preemptive): Among ready processes, the one with the shortest burst time runs to completion.
+  - SRTF (preemptive): At every time unit, the ready process with the least remaining time runs; can preempt.
+- Produces for each process:
+  - CT (Completion Time), TAT (Turnaround Time = CT − AT), WT (Waiting Time = TAT − BT)
+- Compares algorithms using average TAT and average WT.
+- Visualizes execution as:
+  - Gantt chart (blocks on a time axis for each process)
+  - Per-time animation (which process/IDLE is running each time unit)
+
+---
+
+## How it works (under the hood)
+- Input parsing: The table/CSV is converted into `Process` objects with validation (arrival ≥ 0, burst > 0). Missing `pid` values are auto-labeled.
+- Scheduling:
+  - FCFS: Sort by arrival; account for CPU idle time; compute CT/TAT/WT.
+  - SJF: Maintain a ready queue ordered by burst; if none ready, time idles until the next arrival.
+  - SRTF: Step time in units; always pick available process with least remaining burst; record preemptions.
+- Gantt construction: For each algorithm, the app collects `(pid, start, finish)` segments.
+- Plotting:
+  - Gantt is rendered with Plotly `go.Bar` horizontal bars where width = `finish − start` and base = `start`.
+  - Animation uses per-time timeline entries with a simple bar that shows the current running process.
+- Metrics: A results table plus average TAT/WT are computed and shown alongside charts.
+
+---
+
 ## Deploy on Streamlit Community Cloud
 1) Push this project to GitHub with these files at repo root:
    - `app.py`
@@ -84,6 +112,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-
-
