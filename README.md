@@ -35,9 +35,9 @@ The app starts at http://localhost:8501
 
 ## What this web app does
 - Simulates three CPU scheduling strategies on the same set of processes:
-  - FCFS: Processes execute in order of arrival.
-  - SJF (non-preemptive): Among ready processes, the one with the shortest burst time runs to completion.
-  - SRTF (preemptive): At every time unit, the ready process with the least remaining time runs; can preempt.
+  - FCFS(First Come, First Serve): Processes execute in order of arrival.
+  - SJF(Shortest Job First) (non-preemptive): Among ready processes, the one with the shortest burst time runs to completion.
+  - SRTF(Shortest Remaining Time First) (preemptive): At every time unit, the ready process with the least remaining time runs; can preempt.
 - Produces for each process:
   - CT (Completion Time), TAT (Turnaround Time = CT − AT), WT (Waiting Time = TAT − BT)
 - Compares algorithms using average TAT and average WT.
